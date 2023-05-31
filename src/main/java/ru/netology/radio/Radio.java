@@ -55,17 +55,25 @@ public class Radio {
         currentVolume = newVolumeRange;
     }
 
-    public void increaseVolume(int newVolumeRange) {
-        if (newVolumeRange < 100) {
-            newVolumeRange = newVolumeRange + 1;
+    public int increaseVolume(int newVolumeRange) {
+        if (newVolumeRange <= 0) {
+            newVolumeRange = 0;
+            currentVolume = newVolumeRange;
+            return currentVolume;
+
         }
 
-        if (newVolumeRange <= 0) {
-            return;
-        } else {
+        if (newVolumeRange >= 100) {
             newVolumeRange = 100;
+            currentVolume = newVolumeRange;
+            return currentVolume;
+        }
+
+        else {
+            newVolumeRange = newVolumeRange + 1;
         }
         currentVolume = newVolumeRange;
+        return newVolumeRange;
     }
 
     public void decreaseVolume(int newVolumeRange) {
