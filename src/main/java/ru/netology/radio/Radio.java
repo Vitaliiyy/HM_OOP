@@ -1,7 +1,26 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int currentWave;
+    private int currentWave;
+    private int currentVolume;
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume <= 0) {
+            return;
+        }
+        if (newCurrentVolume > 100) {
+            return;
+        }
+        currentVolume = newCurrentVolume;
+    }
+
+    public int getCurrentWave() {
+        return currentWave;
+    }
 
     public void setCurrentWave(int newCurrentWave) {
         if (newCurrentWave <= 0) {
@@ -14,81 +33,65 @@ public class Radio {
     }
 
 
-    public void pushNextButton(int newWave) {
-        if (newWave >= 9) {
-            return;
-        }
-        if (newWave <= 0) {
-            return;
+    public void pushNextButton() {
+        if (currentWave != 9) {
+            currentWave++;
         } else {
-            currentWave = newWave + 1;
+            currentWave = 0;
         }
+
 
     }
 
-    public int pushPreviousButton(int newWave) {
-        if (newWave <= 0) {
-            newWave = 9;
-            currentWave = newWave;
-            return currentWave;
-        }
-        if (newWave > 9) {
-            newWave = 0;
-            return newWave;
+    public void pushPreviousButton() {
+        if (currentWave == 0) {
+            currentWave = 9;
+            return;
         } else {
-            currentWave = newWave - 1;
+            currentWave--;
         }
 
-        return newWave;
-    }
 
+    }
     //    VOLUME
-    public int currentVolume;
 
-    public void setVolumeRange(int newVolumeRange) {
-        if (newVolumeRange <= 0) {
+    public void increaseVolume() {
+        if (currentVolume == 100) {
+            currentVolume = 100;
             return;
-        }
-        if (newVolumeRange > 100) {
-            return;
-        }
-        currentVolume = newVolumeRange;
-    }
 
-    public int increaseVolume(int newVolumeRange) {
-        if (newVolumeRange <= 0) {
-            newVolumeRange = 0;
-            currentVolume = newVolumeRange;
-            return currentVolume;
-
-        }
-
-        if (newVolumeRange >= 100) {
-            newVolumeRange = 100;
-            currentVolume = newVolumeRange;
-            return currentVolume;
-        }
-
-        else {
-            newVolumeRange = newVolumeRange + 1;
-        }
-        currentVolume = newVolumeRange;
-        return newVolumeRange;
-    }
-
-    public void decreaseVolume(int newVolumeRange) {
-        if (newVolumeRange <= 0) {
-            return;
-        }
-
-        if (newVolumeRange > 100) {
-            return;
         } else {
-            newVolumeRange = newVolumeRange - 1;
+            currentVolume++;
         }
-        currentVolume = newVolumeRange;
+
+    }
+
+    public void decreaseVolume() {
+        if (currentVolume == 0) {
+            return;
+
+        } else {
+            currentVolume--;
+        }
+
     }
 }
+
+
+// ДИЧЬ
+//    public void decreaseVolume(int newVolumeRange) {
+//        if (newVolumeRange <= 0) {
+//            return;
+//        }
+//
+//        if (newVolumeRange > 100) {
+//            return;
+//        } else {
+//            newVolumeRange = newVolumeRange - 1;
+//        }
+//        currentVolume = newVolumeRange;
+//    }
+//}
 
 
 
