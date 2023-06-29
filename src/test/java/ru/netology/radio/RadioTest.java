@@ -6,6 +6,66 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    @Test
+    public void setCurrentWaveConstructor() {
+        Radio wave = new Radio(20);
+
+        wave.setCurrentWave(17);
+
+        int expected = 17;
+        int actual = wave.getCurrentWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentWaveConstructor1() {
+        Radio wave = new Radio(0);
+
+        wave.setCurrentWave(0);
+
+        int expected = 0;
+        int actual = wave.getCurrentWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentWaveConstructor2() {
+        Radio wave = new Radio(10);
+
+        wave.setCurrentWave(0);
+
+        int expected = 0;
+        int actual = wave.getCurrentWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentWaveConstructor3() {
+        Radio wave = new Radio(10);
+
+        wave.setCurrentWave(-2);
+
+        int expected = 0;
+        int actual = wave.getCurrentWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentWaveConstructor4() {
+        Radio wave = new Radio(9);
+
+        wave.setCurrentWave(9);
+
+        int expected = 0;
+        int actual = wave.getCurrentWave();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void setCurrentWave() {
